@@ -1,0 +1,41 @@
+= Spring REST Docs Demo
+:toc: left
+:toclevels: 2
+
+:operation-http-request-title: Custom title on selected snippet type
+
+
+[[user]]
+== User
+
+[[load-users]]
+=== Load all users
+operation::get-users[snippets='http-request,http-response,response-headers,response-body,response-fields']
+
+[[load-user-by-id]]
+=== Load User by Id
+operation::get-user-by-id[snippets='http-request,http-response,response-body,response-fields']
+
+[[save-user]]
+=== Save user
+.Custom title on individual snippet
+include::{snippets}/save-user/http-request.adoc[]
+include::{snippets}/save-user/request-body.adoc[]
+include::{snippets}/save-user/request-fields.adoc[]
+include::{snippets}/save-user/http-response.adoc[]
+include::{snippets}/save-user/response-body.adoc[]
+
+[[get-user-by-email]]
+=== Get User by e-mail
+include::{snippets}/get-user-by-email/http-request.adoc[]
+include::{snippets}/get-user-by-email/request-parameters.adoc[]
+include::{snippets}/get-user-by-email/http-response.adoc[]
+include::{snippets}/get-user-by-email/response-body.adoc[]
+
+[[delete-user-by-id]]
+=== Delete User by Id
+include::{snippets}/delete-user-by-id/http-request.adoc[]
+include::{snippets}/delete-user-by-id/path-parameters.adoc[]
+include::{snippets}/delete-user-by-id/http-response.adoc[]
+
+

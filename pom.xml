@@ -15,6 +15,7 @@
 	<description>Demo project for Api Documentation Examples</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -25,6 +26,10 @@
       		<groupId>org.springframework.boot</groupId>
       		<artifactId>spring-boot-starter-web</artifactId>
     	</dependency>
+    	<dependency>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
     	<dependency>
       		<groupId>org.springframework.boot</groupId>
       		<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -45,6 +50,22 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+    		<groupId>org.junit.vintage</groupId>
+    		<artifactId>junit-vintage-engine</artifactId>
+    		<scope>test</scope>
+    		<exclusions>
+        		<exclusion>
+            		<groupId>org.hamcrest</groupId>
+           			<artifactId>hamcrest-core</artifactId>
+        		</exclusion>
+    		</exclusions>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.restdocs</groupId>
+		    <artifactId>spring-restdocs-mockmvc</artifactId>
+		    <scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -53,6 +74,36 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin> 
+				    <groupId>org.asciidoctor</groupId>
+				    <artifactId>asciidoctor-maven-plugin</artifactId>
+				    <version>1.5.6</version>
+				    <configuration>
+				                <backend>html</backend>
+				                <doctype>book</doctype>
+				                <attributes>
+				                    <snippets>${snippetsDirectory}</snippets> 
+				                </attributes>
+				                <sourceDirectory>src/main/asciidoc</sourceDirectory>
+				                <outputDirectory>${project.build.directory}/generated-docs</outputDirectory>
+				  	</configuration>
+				    <executions>
+				        <execution>
+				            <id>asciidoc-to-html</id>
+							<phase>package</phase>
+				            <goals>
+				                <goal>process-asciidoc</goal>
+				            </goals>
+					 	</execution>
+				    </executions>
+				    <dependencies>
+						<dependency> 
+							<groupId>org.springframework.restdocs</groupId>
+							<artifactId>spring-restdocs-asciidoctor</artifactId>
+							    <version>2.0.5.RELEASE</version>
+						</dependency>
+					</dependencies>
+				</plugin>
 		</plugins>
 	</build>
 

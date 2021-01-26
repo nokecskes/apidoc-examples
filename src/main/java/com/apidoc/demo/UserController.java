@@ -12,30 +12,35 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 	
+	
+	public static final String API_USER = "/api/user";
+	public static final String API_USER_BY_ID = "/api/user{id}";
+	public static final String API_USERS = "/api/users";
+	
 	@Autowired
 	private UserRepository userRepository;
 	
-	@GetMapping("/api/users")
+	@GetMapping(API_USERS)
 	public Iterable<User> getUsers() {
 		return userRepository.findAll();
 	}
 	
-	@GetMapping("/api/user/{id}")
+	@GetMapping(API_USER_BY_ID)
 	public User getUser(@PathVariable Long id) {
 		return userRepository.findById(id).get();
 	}
 	
-	@PostMapping("/api/user")
+	@PostMapping(API_USER)
 	public User saveUser(@RequestBody User user) {
 		return userRepository.save(user);
 	}
 	
-	@GetMapping("/api/user")
+	@GetMapping(API_USER)
 	public User getUserByEMail(@RequestParam String eMail) {
 		return userRepository.findByeMail(eMail);
 	}
 	
-	@DeleteMapping("/api/user/{id}")
+	@DeleteMapping(API_USER_BY_ID)
 	public void deleteUser(@PathVariable Long id) {
 		userRepository.deleteById(id);
 	}
