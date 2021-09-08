@@ -46,6 +46,22 @@
     		<version>3.0.0</version>
 		</dependency>
 		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-staticdocs</artifactId>
+		    <version>2.6.1</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.restdocs</groupId>
+		    <artifactId>spring-restdocs-mockmvc</artifactId>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.8</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -57,6 +73,46 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+			    <groupId>org.asciidoctor</groupId>
+			    <artifactId>asciidoctor-maven-plugin</artifactId>
+			    <configuration>
+					<backend>html</backend>
+				    <doctype>book</doctype>
+				    <attributes>
+				    	<snippets>${project.build.directory}/generated-snippets</snippets> 
+				    </attributes>
+				    <sourceDirectory>src/main/asciidoc</sourceDirectory>
+				    <outputDirectory>${project.build.directory}/generated-docs</outputDirectory>
+				</configuration>
+<!-- 			    <configuration> -->
+<!-- 			        To configure index.adoc Get Path for -->
+<!-- 			        <sourceDirectory>src/main/asciidoc</sourceDirectory> -->
+<!-- 			        <outputDirectory>${project.build.directory}/asciidoc/html</outputDirectory> -->
+<!-- 			        <sourceDocumentName>index.adoc</sourceDocumentName> -->
+<!-- 			        <attributes> -->
+<!-- 			            <doctype>book</doctype> -->
+<!-- 			            <toc>left</toc> -->
+<!-- 			            <toclevels>3</toclevels> -->
+<!-- 			            <generated>${project.build.directory}/asciidoc</generated> -->
+<!-- 			        </attributes> -->
+<!-- 			    </configuration> -->
+			    <executions>
+			        <execution>
+			            <id>output-html</id>
+			            <phase>test</phase>
+			            <goals>
+			                <goal>process-asciidoc</goal>
+			            </goals>
+			            <configuration>
+			                <backend>html</backend>
+			                <attributes>
+			                    <snippets>${project.build.directory}/generated-snippets</snippets>
+			                </attributes>
+			            </configuration>
+			        </execution>
+			    </executions>
 			</plugin>
 		</plugins>
 	</build>

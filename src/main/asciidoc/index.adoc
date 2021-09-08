@@ -1,0 +1,16 @@
+
+
+.curl
+include::{snippets}/curl-request.adoc[]
+.request
+include::{snippets}/http-request.adoc[]
+.response
+include::{snippets}/http-response.adoc[]
+
+.curl
+include::{snippets}/curl-request.adoc[]
+.request
+include::{snippets}/http-request.adoc[]
+.response
+include::{snippets}/http-response.adoc[]
+
