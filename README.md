@@ -19,3 +19,11 @@ Main branch contains the boilerplate code.
 		- API documentation: target/generated-docs/index.html
 		- Generated snippets: target/generated-snippets/
 		
+
+## Try Swagger2Markup:
+	1. Checkout 'swagger2markup_demo' branch
+	2. Run: 'mvn clean test'
+	3. Generated API documentation is at: /target/asciidoc/html/index.html
+	
+	See configuration source: https://github.com/Swagger2Markup/spring-swagger2markup-demo
+		
